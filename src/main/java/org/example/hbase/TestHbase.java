@@ -19,7 +19,7 @@ import java.util.Properties;
 public class TestHbase {
     private static String zkServer = "localhost";
     private static Integer port = 9095;
-    private static TableName tableName = TableName.valueOf("testflink");
+    private static TableName tableName = TableName.valueOf("testflink1");
     private static final String cf = "ke";
 
     @Test
@@ -43,7 +43,8 @@ public class TestHbase {
         System.out.println(connect.isClosed());
         Admin admin = connect.getAdmin();
         System.out.println("连接成功");
-//        admin.listTableNames();
+        for (TableName tableName:admin.listTableNames())
+            System.out.println(tableName.toString());
 //        Table table = connect.getTable(TableName.valueOf("midas_ctr_test"));
         System.out.println("获取表数据成功");
 //        for i :table.getScanner().iterator();
